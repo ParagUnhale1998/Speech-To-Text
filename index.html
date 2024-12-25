@@ -278,7 +278,10 @@ select{
       };
 
       recognition.onend = function () {
-        if (isListening) stopListening();
+        // if (isListening) stopListening();
+        if (isListening) {
+        recognition.start(); // Restart automatically
+    }
       };
 
       recognition.start();
