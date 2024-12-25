@@ -4,140 +4,156 @@
   <title>Speech to Text Converter</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f5f5f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-    .container {
-      max-width: 500px;
-      width: 90%;
-      margin: 0 auto;
-      padding: 20px;
-      background: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+.container {
+  width: 100%; /* Full width by default */
+  max-width: 500px; /* Restricts width for larger devices */
+  margin: 0 auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-    h1 {
-      text-align: center;
-      color: #333;
-    }
+h1 {
+  text-align: center;
+  color: #333;
+}
 
-    label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: bold;
-      color: #555;
-    }
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #555;
+}
 
-    select,
-    textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 14px;
-      margin-top: 1%;
-    }
+select,
+textarea {
+  width: 100%; /* Ensure full width on smaller screens */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 1%;
+}
 
-    textarea {
-      width: 481px;
-      height: 176px;
-    }
+textarea {
+  height: 176px;
+}
 
-    button {
-      width: 100%;
-      padding: 10px;
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-    button:hover {
-      background-color: #45a049;
-    }
+button:hover {
+  background-color: #45a049;
+}
 
-    button:active {
-      transform: scale(0.98);
-    }
+button:active {
+  transform: scale(0.98);
+}
 
-    .stop-btn {
-      background-color: #dc3545;
-    }
+.stop-btn {
+  background-color: #dc3545;
+}
 
-    .stop-btn:hover {
-      background-color: #c82333;
-    }
+.stop-btn:hover {
+  background-color: #c82333;
+}
 
-    .copy-btn,
-    .clear-btn {
-      display: inline-block;
-      padding: 8px 16px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background-color 0.3s ease;
-    }
+.copy-btn,
+.clear-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
 
-    .copy-btn:hover {
-      background-color: #0056b3;
-    }
+.copy-btn:hover {
+  background-color: #0056b3;
+}
 
-    .clear-btn {
-      background-color: #6c757d;
-    }
+.clear-btn {
+  background-color: #6c757d;
+}
 
-    .clear-btn:hover {
-      background-color: #5a6268;
-    }
+.clear-btn:hover {
+  background-color: #5a6268;
+}
 
-    .listening-animation {
-      display: flex;
-      justify-content: center;
-      margin-top: 15px;
-      margin-bottom: 15px;
-    }
+.listening-animation {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 
-    .listening-animation span {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      margin: 0 5px;
-      background-color: #4caf50;
-      border-radius: 50%;
-      animation: bounce 0.6s infinite alternate;
-    }
+.listening-animation span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  animation: bounce 0.6s infinite alternate;
+}
 
-    .listening-animation span:nth-child(2) {
-      animation-delay: 0.2s;
-    }
+.listening-animation span:nth-child(2) {
+  animation-delay: 0.2s;
+}
 
-    .listening-animation span:nth-child(3) {
-      animation-delay: 0.4s;
-    }
+.listening-animation span:nth-child(3) {
+  animation-delay: 0.4s;
+}
 
-    @keyframes bounce {
-      from {
-        transform: scale(1);
-      }
-      to {
-        transform: scale(1.5);
-      }
-    }
+@keyframes bounce {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
+
+/* Media Query for Larger Devices (Desktops) */
+@media (min-width: 768px) {
+  .container {
+    width: 60%; /* Restrict the width on larger screens */
+    max-width: 500px;
+  }
+}
+
+/* Media Query for Extra Large Devices */
+@media (min-width: 1200px) {
+  .container {
+    width: 40%;
+    max-width: 600px;
+  }
+}
+
   </style>
 </head>
 <body>
