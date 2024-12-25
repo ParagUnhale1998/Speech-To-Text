@@ -48,10 +48,8 @@
     }
 
     textarea {
-      /* height: 150px; */
       width: 481px;
       height: 176px;
-      /* resize: none; */
     }
 
     button {
@@ -162,6 +160,7 @@
     <textarea id="resultText" placeholder="Your transcribed text will appear here..."></textarea>
     <button class="copy-btn" onclick="copyToClipboard()">Copy Text</button>
     <button class="clear-btn" onclick="clearText()">Clear Text</button>
+    <button class="clear-btn" onclick="removeRepetitions()">Remove Repetitions</button>
   </div>
 
   <script>
@@ -184,12 +183,10 @@
       const selectedLanguage = languageSelect.value;
 
       recognition = new webkitSpeechRecognition();
-      // console.log(recognition)
       recognition.lang = selectedLanguage;
       recognition.interimResults = true;
       recognition.continuous = true;
 
-      // Show animation and change button text
       startStopButton.textContent = "Stop Listening";
       startStopButton.classList.add("stop-btn");
       listeningAnimation.style.display = "flex";
@@ -219,7 +216,6 @@
         recognition.stop();
       }
 
-      // Hide animation and reset button
       startStopButton.textContent = "Start Listening";
       startStopButton.classList.remove("stop-btn");
       listeningAnimation.style.display = "none";
@@ -227,43 +223,21 @@
     }
 
     function copyToClipboard() {
-    navigator.clipboard.writeText(resultText.value).then(() => {
-      showPopup("Text copied to clipboard!");
-    });
-  }
-
-  function showPopup(message) {
-    // Create popup element
-    const popup = document.createElement('div');
-    popup.textContent = message;
-    popup.style.position = 'absolute';
-    popup.style.top = '10px';
-    popup.style.right = '10px';
-    popup.style.padding = '10px 20px';
-    popup.style.backgroundColor = '#4caf50';
-    popup.style.color = '#fff';
-    popup.style.borderRadius = '5px';
-    popup.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.2)';
-    popup.style.fontSize = '14px';
-    popup.style.zIndex = '1000';
-    popup.style.transition = 'opacity 0.3s ease';
-    popup.style.opacity = '1';
-
-    // Append popup to body
-    document.body.appendChild(popup);
-
-    // Fade out and remove after 1 second
-    setTimeout(() => {
-      popup.style.opacity = '0';
-      setTimeout(() => {
-        document.body.removeChild(popup);
-      }, 300); // Wait for fade-out transition
-    }, 1000); // Display for 1 second
-  }
+      navigator.clipboard.writeText(resultText.value).then(() => {
+        alert("Text copied to clipboard!");
+      });
+    }
 
     function clearText() {
       resultText.value = "";
     }
+
+    function removeRepetitions() {
+      const text = resultText.value;
+      const filteredText = text.replace(/\b(\w+)\b(?:\s+\1\b)+/g, "$1");
+      resultText.value = filteredText;
+    }
+    
   </script>
 </body>
 </html>
