@@ -249,10 +249,27 @@ button:active {
     }
 
     function removeRepetitions() {
-      const text = resultText.value;
-      const filteredText = text.replace(/\b(\w+)\b(?:\s+\1\b)+/g, "$1");
-      resultText.value = filteredText;
+    const text = resultText.value;
+
+    // Split the text into words
+    const words = text.split(/\s+/);
+
+    // Use a Set to track unique words while maintaining order
+    const seen = new Set();
+    const filteredWords = [];
+
+    for (let word of words) {
+        if (!seen.has(word)) {
+            seen.add(word);
+            filteredWords.push(word);
+        }
     }
+
+    // Join the words back into a single string
+    resultText.value = filteredWords.join(' ');
+}
+
+
     
   </script>
 </body>
