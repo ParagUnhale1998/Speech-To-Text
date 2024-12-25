@@ -15,10 +15,9 @@
 }
 
 .container {
-  width: 100%;
-  /* Full width by default */
-/*   max-width: 500px; */
-  /* Restricts width for larger devices */
+  width: 100%; 
+  height: 100%;
+  /* max-width: 500px; Restricts width for larger devices */
   margin: 0 auto;
   padding: 20px;
   background: #ffffff;
@@ -29,6 +28,7 @@
 h1 {
   text-align: center;
   color: #333;
+  
 }
 
 label {
@@ -36,12 +36,14 @@ label {
   margin-bottom: 10px;
   font-weight: bold;
   color: #555;
+ 
 }
 
 select,
 textarea {
   width: 100%; /* Ensure full width on smaller screens */
   padding: 10px;
+  
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -140,26 +142,74 @@ button:active {
   }
 }
 
+.container {
+    /* width: 60%; */
+     /* Restrict the width on larger screens */
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+  }
+  textarea {
+  height: 50%;
+}
+button {
+  font-size: 5vw;
+  padding: 2%;
+}
+.copy-btn,
+.clear-btn {
+ padding: 2%;
+ font-size: 5vw;
+}
+h1 {
+  font-size: 5vw;
+  
+}
+
+label {
+  font-size: 5vw;
+ 
+}
+select{
+  font-size: 5vw;
+}
+
 /* Media Query for Larger Devices (Desktops) */
 @media (min-width: 768px) {
   .container {
-/*     width: 60%; /* Restrict the width on larger screens 
-    max-width: 500px; */
-
-        width: 100%;
-        height: 100%;
+    /* width: 60%; */
+     /* Restrict the width on larger screens */
+    max-width: 100%;
+    width: 90%;
+    /* border: 2px solid black; */
+    box-shadow: 5px 5px 10px solid black;
+    height: 100%;
+    margin: 0 auto;
   }
-  textarea{
- height: 80%;
-  }
+  textarea {
+  height: 30%;
+}
+button {
+  font-size: 3vh;
+  padding: 1%;
+}
+.copy-btn,
+.clear-btn {
+ padding: 1%;
+ font-size: 3vh;
+}
+h1 {
+  font-size: 3vh;
+  
 }
 
-/* Media Query for Extra Large Devices */
-@media (min-width: 1200px) {
-  .container {
-    width: 40%;
-    max-width: 600px;
-  }
+label {
+  font-size: 3vh;
+ 
+}
+select{
+  font-size: 2vh;
+}
 }
 
   </style>
